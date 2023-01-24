@@ -1,16 +1,17 @@
 <?php
 include 'connect.php';
+$id=$_GET['updateid'];
 if(isset($_POST['submit'])) {
     $name=$_POST['name'];
     $email=$_POST['email'];
     $mobile=$_POST['mobile'];
     $password=$_POST['password'];
 
-    $sql="insert into `crud` (name,email,mobile,password) values('$name','$email','$mobile','$password')";
+    $sql="update `crud` set id='$id',name='$name',email='$email',mobile='$mobile',password='$password'";
     $result=mysqli_query($con,$sql);
     if($result) {
-        // echo "Data inserted successfully";
-        header('location:display.php');
+         echo "Updated successfully";
+        // header('location:display.php');
     }else {
         die(mysqli_error($con));
     }
@@ -57,7 +58,7 @@ if(isset($_POST['submit'])) {
     <input type="password" class="form-control"  placeholder="Enter your password" name="password">
   </div>
  
-  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+  <button type="submit" class="btn btn-primary" name="submit">Update</button>
 </form>
     </div>
 
